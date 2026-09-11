@@ -1,24 +1,187 @@
-<!doctype html><html lang="en"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>My next idea · The Understudy</title>
-<style>*{box-sizing:border-box}body{margin:0;background:#f5f2e9;color:#20281f;font:18px/1.55 system-ui,sans-serif}main{max-width:1120px;margin:auto;padding:40px 6vw}header{display:flex;justify-content:space-between;border-bottom:1px solid #b8bcae;padding-bottom:22px;font-size:13px;letter-spacing:.12em;text-transform:uppercase}.stage{display:grid;grid-template-columns:1.5fr 1fr;gap:7vw;align-items:center;min-height:65vh}h1{font-family:Georgia,serif;font-weight:400;font-size:clamp(60px,8vw,112px);letter-spacing:-.06em;line-height:.96;margin:40px 0 25px}p{max-width:530px}.eyebrow{font-size:12px;letter-spacing:.14em;text-transform:uppercase}.mark{height:280px;position:relative;display:grid;place-items:center}.mark span{position:absolute;width:160px;height:220px;border:2px solid #42613b;transform:rotate(var(--r));transition:transform .5s}.mark span:nth-child(1){--r:-25deg}.mark span:nth-child(2){--r:0deg;background:#dbe4be}.mark span:nth-child(3){--r:25deg}.mark:hover span{transform:rotate(calc(var(--r) * 1.3))}a{color:inherit;text-underline-offset:5px}.links{display:flex;flex-wrap:wrap;gap:24px;padding:25px 0}.primary{background:#263d24;color:#fff;padding:12px 20px;text-decoration:none}footer{border-top:1px solid #b8bcae;padding-top:24px;font-size:14px}a:focus-visible{outline:3px solid #a54919;outline-offset:5px}@media(max-width:650px){.stage{display:block;min-height:0}.mark{height:170px;margin:30px 0}.mark span{width:100px;height:140px}header{gap:20px}main{padding:25px 7vw}}@media(prefers-reduced-motion:reduce){.mark span{transition:none}.mark:hover span{transform:rotate(var(--r))}}.live{border-top:1px solid #b8bcae;padding:22px 0 4px;display:flex;flex-wrap:wrap;gap:14px;align-items:center}.live code{flex:1 1 300px;min-width:0;background:#fff;border:1px solid #b8bcae;padding:11px 13px;font-size:14px;overflow-wrap:anywhere}.live button{min-height:44px;padding:11px 18px;font:inherit;font-weight:600;color:#fff;background:#263d24;border:0;cursor:pointer}.live button:focus-visible{outline:3px solid #a54919;outline-offset:5px}.live small{flex-basis:100%;font-size:14px;color:#4a5247}</style>
-<main><header><b>CPVC / The Understudy</b><span>Session 02 · Starter</span></header><section class="stage"><div><h1>A small site.<br>A real beginning.</h1><p>This is my working starter. My own one-page site and one useful interaction come next.</p><p class="eyebrow">Published first. Made mine next.</p></div><div class="mark" aria-hidden="true"><span></span><span></span><span></span></div></section><div class="live"><code id="liveurl">Open this page over http:// or https:// to see its address.</code><button id="copy" type="button">Copy link</button><small id="copyhint">This is the address you submit. Not your GitHub repository address.</small></div><div class="links"><a class="primary" href="https://calpolyvibecoding.com/portal">Submit my live URL ↗</a><a id="guide" href="https://github.com/calpolyvibecoding-01/cpvc-02-understudy-template#readme">Follow the build guide →</a><a href="examples/coast/">See the coastal example →</a></div><footer>Deploy this untouched starter, open the actual live URL, then confirm your portal submission. <strong>STOP 1:</strong> only then brief the agent and build your own idea. Keep the same root URL as your site grows.</footer></main>
-<script>
-(function(){
-  var box=document.getElementById('liveurl'),btn=document.getElementById('copy'),
-      hint=document.getElementById('copyhint'),guide=document.getElementById('guide');
-  var web=location.protocol==='http:'||location.protocol==='https:';
-  var url=web?location.origin+location.pathname:'';
-  if(web){box.textContent=url;}else{btn.hidden=true;hint.textContent='You are viewing this file directly. Publish it with GitHub Pages to get a real address.';}
-  var host=location.hostname.match(/^([a-z0-9-]+)\.github\.io$/i),
-      repo=location.pathname.split('/').filter(Boolean)[0];
-  if(host&&repo){guide.href='https://github.com/'+host[1]+'/'+repo+'#readme';}
-  btn.addEventListener('click',function(){
-    function pick(){var r=document.createRange();r.selectNodeContents(box);
-      var s=window.getSelection();s.removeAllRanges();s.addRange(r);
-      hint.textContent='Link selected. Press Ctrl+C or Cmd+C to copy it.';}
-    if(navigator.clipboard&&navigator.clipboard.writeText){
-      navigator.clipboard.writeText(url).then(function(){hint.textContent='Copied. Paste it into the Link field in the portal.';},pick);
-    }else{pick();}
-  });
-})();
-</script>
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="A friendly, local-only calisthenics workout planner for beginner clubs.">
+  <title>Club Move · Calisthenics Planner</title>
+  <style>
+    :root { --ink:#132129; --paper:#f4f0e5; --lime:#d7f35b; --orange:#ff805c; --sky:#b9e9f8; --muted:#5b6870; --line:rgba(19,33,41,.16); --shadow:0 16px 0 rgba(19,33,41,.12); }
+    * { box-sizing:border-box; }
+    body { margin:0; background:var(--paper); color:var(--ink); font:16px/1.5 ui-rounded, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; }
+    button { font:inherit; }
+    .wrap { width:min(1180px, calc(100% - 32px)); margin:auto; }
+    header { padding:20px 0 12px; display:flex; align-items:center; justify-content:space-between; gap:20px; }
+    .brand { display:flex; align-items:center; gap:10px; font-weight:900; letter-spacing:-.03em; font-size:1.1rem; }
+    .brand-mark { width:34px; height:34px; display:grid; place-items:center; background:var(--lime); border:2px solid var(--ink); border-radius:50% 50% 42% 42%; box-shadow:3px 3px 0 var(--ink); }
+    .local-note { margin:0; font-size:.8rem; color:var(--muted); }
+    main { padding:18px 0 44px; }
+    .intro { display:grid; grid-template-columns:1.1fr .9fr; gap:28px; align-items:end; padding:24px 0 32px; }
+    .eyebrow { margin:0 0 8px; color:#37616d; font-weight:800; font-size:.78rem; letter-spacing:.13em; text-transform:uppercase; }
+    h1 { max-width:760px; margin:0; font-size:clamp(2.4rem, 7vw, 5.7rem); line-height:.9; letter-spacing:-.075em; }
+    .intro-copy { margin:0; max-width:420px; font-size:1.05rem; }
+    .how { border:2px solid var(--ink); background:var(--sky); padding:16px 18px; border-radius:20px; box-shadow:7px 7px 0 var(--ink); }
+    .how strong { display:block; margin-bottom:4px; }
+    .planner { display:grid; grid-template-columns:minmax(0,1fr) minmax(330px,.86fr); gap:26px; align-items:start; }
+    .section-title { display:flex; align-items:baseline; justify-content:space-between; gap:12px; margin:0 0 12px; }
+    h2 { margin:0; font-size:1.35rem; letter-spacing:-.035em; }
+    .section-title span { color:var(--muted); font-size:.85rem; }
+    .workouts { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:12px; }
+    .workout { position:relative; min-height:150px; padding:18px; text-align:left; border:2px solid var(--ink); border-radius:18px; background:#fffdf8; cursor:pointer; overflow:hidden; transition:transform .16s ease, box-shadow .16s ease, background .16s ease; }
+    .workout:hover { transform:translate(-3px,-3px); box-shadow:5px 5px 0 var(--ink); }
+    .workout[aria-pressed="true"] { background:var(--lime); box-shadow:5px 5px 0 var(--ink); transform:translate(-3px,-3px); }
+    .workout:focus-visible, .day:focus-visible, .add:focus-visible, .remove:focus-visible { outline:4px solid var(--orange); outline-offset:3px; }
+    .workout .kind { display:block; color:#47606a; font-size:.75rem; font-weight:800; letter-spacing:.08em; text-transform:uppercase; }
+    .workout strong { display:block; max-width:145px; margin-top:7px; font-size:1.12rem; line-height:1.05; }
+    .mini-motion { position:absolute; right:15px; bottom:13px; font-size:2.05rem; transform-origin:bottom center; }
+    .workout[aria-pressed="true"] .mini-motion { animation:bounce .7s ease-in-out 2; }
+    .move-panel { min-height:218px; margin-top:16px; padding:18px; border:2px solid var(--ink); border-radius:18px; background:var(--ink); color:white; }
+    .move-panel.empty .move-content { opacity:.55; }
+    .move-content { display:grid; grid-template-columns:90px 1fr; gap:14px; align-items:center; }
+    .move-icon { display:grid; place-items:center; width:90px; height:90px; border:2px solid var(--lime); border-radius:50%; color:var(--lime); font-size:3.2rem; }
+    .move-panel.playing .move-icon { animation:bounce .65s ease-in-out 2; }
+    .move-panel h3 { margin:0 0 4px; font-size:1.2rem; }
+    .move-panel p { margin:0; color:#d5dfe2; font-size:.92rem; }
+    .cue { display:inline-block; margin-top:9px; padding:3px 8px; border-radius:999px; background:var(--lime); color:var(--ink); font-size:.76rem; font-weight:800; }
+    .calendar { border:2px solid var(--ink); border-radius:22px; background:#fffdf8; overflow:hidden; box-shadow:var(--shadow); }
+    .calendar-top { padding:18px; background:var(--orange); border-bottom:2px solid var(--ink); }
+    .calendar-top p { margin:4px 0 0; font-size:.88rem; }
+    .days { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:0; }
+    .day { min-height:132px; padding:12px; text-align:left; border:0; border-right:1px solid var(--line); border-bottom:1px solid var(--line); background:transparent; cursor:pointer; vertical-align:top; }
+    .day:nth-child(even) { border-right:0; }
+    .day:hover { background:#fff5d6; }
+    .day[aria-pressed="true"] { background:var(--lime); box-shadow:inset 0 0 0 3px var(--ink); }
+    .day-name { display:block; margin-bottom:8px; font-size:.82rem; font-weight:900; text-transform:uppercase; letter-spacing:.07em; }
+    .entry { display:flex; align-items:center; justify-content:space-between; gap:6px; margin:5px 0; padding:5px 5px 5px 8px; border:1px solid var(--ink); border-radius:9px; background:white; font-size:.8rem; font-weight:750; }
+    .remove { flex:0 0 auto; width:25px; height:25px; border:1px solid var(--ink); border-radius:7px; background:#fff; color:var(--ink); cursor:pointer; font-weight:900; line-height:1; }
+    .remove:hover { background:var(--orange); }
+    .add-row { display:flex; align-items:center; justify-content:space-between; gap:14px; padding:14px 16px 16px; border-top:2px solid var(--ink); }
+    .selection { margin:0; color:var(--muted); font-size:.85rem; }
+    .add { min-height:44px; padding:9px 14px; border:2px solid var(--ink); border-radius:12px; background:var(--lime); color:var(--ink); cursor:pointer; font-weight:900; box-shadow:3px 3px 0 var(--ink); }
+    .add:hover:not(:disabled) { transform:translate(-2px,-2px); box-shadow:5px 5px 0 var(--ink); }
+    .add:disabled { background:#d5d8d2; box-shadow:none; color:#69747a; cursor:not-allowed; }
+    .rule { margin:25px 0 0; padding:14px 16px; border-left:6px solid var(--orange); background:#fff5d6; font-size:.92rem; }
+    .rule strong { display:block; }
+    .status { min-height:1.5em; margin:15px 0 0; color:#37616d; font-weight:700; }
+    footer { padding:18px 0 35px; color:var(--muted); font-size:.82rem; }
+    @keyframes bounce { 0%,100%{transform:translateY(0) rotate(0)} 35%{transform:translateY(-15px) rotate(-8deg)} 65%{transform:translateY(0) rotate(8deg)} }
+    @media (max-width:800px) { .intro,.planner { grid-template-columns:1fr; } .intro { gap:15px; } .planner { gap:30px; } }
+    @media (max-width:480px) { .wrap { width:min(100% - 22px,1180px); } header { align-items:flex-start; } .local-note { max-width:150px; text-align:right; } .workouts { grid-template-columns:1fr; } .move-content { grid-template-columns:70px 1fr; } .move-icon { width:70px; height:70px; font-size:2.5rem; } .days { grid-template-columns:1fr; } .day,.day:nth-child(even) { border-right:0; } .add-row { align-items:flex-start; flex-direction:column; } }
+    @media (prefers-reduced-motion:reduce) { *,*::before,*::after { scroll-behavior:auto!important; animation-duration:.01ms!important; animation-iteration-count:1!important; transition-duration:.01ms!important; } }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <header>
+      <div class="brand"><span class="brand-mark" aria-hidden="true">↗</span>Club Move</div>
+      <p class="local-note">Your plan stays in this browser.</p>
+    </header>
+    <main>
+      <section class="intro" aria-labelledby="page-title">
+        <div><p class="eyebrow">Beginner calisthenics club</p><h1 id="page-title">Pick a move.<br>Make a plan.</h1></div>
+        <p class="intro-copy">Choose a friendly starting workout, watch its quick movement cue, and put it on your club week.</p>
+      </section>
+      <section class="planner" aria-label="Workout planning area">
+        <div>
+          <div class="section-title"><h2>1. Choose a workout</h2><span>Tap a card to try its cue</span></div>
+          <div class="workouts" id="workouts"></div>
+          <section class="move-panel empty" id="move-panel" aria-live="polite" aria-label="Selected workout movement cue">
+            <div class="move-content"><div class="move-icon" id="move-icon" aria-hidden="true">✦</div><div><h3 id="move-name">Ready when you are</h3><p id="move-text">Choose a workout card to see a short, beginner-friendly movement cue.</p><span class="cue" id="move-cue">Start small</span></div></div>
+          </section>
+        </div>
+        <section class="calendar" aria-labelledby="calendar-title">
+          <div class="calendar-top"><h2 id="calendar-title">2. Pick your day</h2><p>You can add more than one workout to a day. Plans are saved on this device.</p></div>
+          <div class="days" id="days"></div>
+          <div class="add-row"><p class="selection" id="selection">Choose a workout and a day.</p><button class="add" id="add" type="button" disabled>Add to calendar</button></div>
+        </section>
+      </section>
+      <aside class="rule"><strong>Your club rule</strong>Every saved calendar workout shows its name and has a one-click Remove button.</aside>
+      <p class="status" id="status" role="status" aria-live="polite"></p>
+    </main>
+    <footer>Sample workout names and cues are for planning practice, not medical advice. Adjust, rest, or ask a qualified coach when needed.</footer>
+  </div>
+  <script>
+    (function () {
+      var workouts = [
+        { id:'push', name:'Wall Push-Up', kind:'Upper body', icon:'↔', text:'Stand an arm’s length from a wall. Bend your elbows, then press the wall away.', cue:'Keep your body in one long line.' },
+        { id:'squat', name:'Chair Squat', kind:'Legs', icon:'↕', text:'Reach your hips back toward a chair, stand tall, and repeat at a comfortable pace.', cue:'Knees follow your toes.' },
+        { id:'hang', name:'Active Hang', kind:'Grip + back', icon:'⌇', text:'Hang from a low, sturdy bar with feet supported if needed; gently pull shoulders down.', cue:'Start with a short, comfortable hold.' },
+        { id:'plank', name:'Knee Plank', kind:'Core', icon:'—', text:'Set hands below shoulders and make a straight line from shoulders through knees.', cue:'Breathe slowly; stop before form fades.' }
+      ];
+      var days = ['Monday','Tuesday','Wednesday','Thursday','Friday','Saturday','Sunday'];
+      var selectedWorkout = null, selectedDay = null;
+      var saved = {};
+      try { saved = JSON.parse(localStorage.getItem('club-move-plan')) || {}; } catch (e) { saved = {}; }
+      var workoutsRoot = document.getElementById('workouts');
+      var daysRoot = document.getElementById('days');
+      var movePanel = document.getElementById('move-panel');
+      var moveIcon = document.getElementById('move-icon');
+      var moveName = document.getElementById('move-name');
+      var moveText = document.getElementById('move-text');
+      var moveCue = document.getElementById('move-cue');
+      var selection = document.getElementById('selection');
+      var add = document.getElementById('add');
+      var status = document.getElementById('status');
+      function persist() { localStorage.setItem('club-move-plan', JSON.stringify(saved)); }
+      function renderWorkouts() {
+        workoutsRoot.textContent = '';
+        workouts.forEach(function (workout) {
+          var button = document.createElement('button');
+          button.type = 'button'; button.className = 'workout'; button.dataset.id = workout.id;
+          button.setAttribute('aria-pressed', String(selectedWorkout === workout.id));
+          var kind = document.createElement('span'); kind.className = 'kind'; kind.textContent = workout.kind;
+          var name = document.createElement('strong'); name.textContent = workout.name;
+          var icon = document.createElement('span'); icon.className = 'mini-motion'; icon.setAttribute('aria-hidden','true'); icon.textContent = workout.icon;
+          button.append(kind, name, icon);
+          button.addEventListener('click', function () { selectWorkout(workout); });
+          workoutsRoot.appendChild(button);
+        });
+      }
+      function renderDays() {
+        daysRoot.textContent = '';
+        days.forEach(function (day) {
+          var button = document.createElement('button'); button.type = 'button'; button.className = 'day'; button.dataset.day = day;
+          button.setAttribute('aria-pressed', String(selectedDay === day));
+          var name = document.createElement('span'); name.className = 'day-name'; name.textContent = day;
+          button.appendChild(name);
+          (saved[day] || []).forEach(function (entry) {
+            var row = document.createElement('span'); row.className = 'entry';
+            var title = document.createElement('span'); title.textContent = entry.name;
+            var remove = document.createElement('button'); remove.type = 'button'; remove.className = 'remove'; remove.setAttribute('aria-label','Remove ' + entry.name + ' from ' + day); remove.textContent = '×';
+            remove.addEventListener('click', function (event) { event.stopPropagation(); removeWorkout(day, entry.id, entry.name); });
+            row.append(title, remove); button.appendChild(row);
+          });
+          button.addEventListener('click', function () { selectedDay = day; renderDays(); updateAdd(); status.textContent = day + ' selected.'; });
+          daysRoot.appendChild(button);
+        });
+      }
+      function selectWorkout(workout) {
+        selectedWorkout = workout.id; renderWorkouts();
+        movePanel.classList.remove('empty'); movePanel.classList.remove('playing'); void movePanel.offsetWidth; movePanel.classList.add('playing');
+        moveIcon.textContent = workout.icon; moveName.textContent = workout.name; moveText.textContent = workout.text; moveCue.textContent = workout.cue;
+        updateAdd(); status.textContent = workout.name + ' selected. Movement cue is showing.';
+      }
+      function updateAdd() {
+        var workout = workouts.find(function (item) { return item.id === selectedWorkout; });
+        add.disabled = !(workout && selectedDay);
+        if (workout && selectedDay) { selection.textContent = workout.name + ' → ' + selectedDay; add.textContent = 'Add to ' + selectedDay; }
+        else if (workout) { selection.textContent = workout.name + ' selected. Now choose a day.'; add.textContent = 'Choose a day'; }
+        else if (selectedDay) { selection.textContent = selectedDay + ' selected. Now choose a workout.'; add.textContent = 'Choose a workout'; }
+        else { selection.textContent = 'Choose a workout and a day.'; add.textContent = 'Add to calendar'; }
+      }
+      function removeWorkout(day, id, name) {
+        saved[day] = (saved[day] || []).filter(function (entry) { return entry.id !== id; });
+        persist(); renderDays(); status.textContent = name + ' removed from ' + day + '.';
+      }
+      add.addEventListener('click', function () {
+        var workout = workouts.find(function (item) { return item.id === selectedWorkout; });
+        if (!workout || !selectedDay) return;
+        var entry = { id: String(Date.now()) + Math.random(), name: workout.name };
+        saved[selectedDay] = saved[selectedDay] || []; saved[selectedDay].push(entry); persist(); renderDays();
+        status.textContent = workout.name + ' added to ' + selectedDay + '. It is saved in this browser and ready to remove in one click.';
+      });
+      renderWorkouts(); renderDays(); updateAdd();
+    }());
+  </script>
+</body>
 </html>
