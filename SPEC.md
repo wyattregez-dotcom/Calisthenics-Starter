@@ -1,12 +1,8 @@
 # TARGET: today's build
 
-Choose the idea, person, interaction, and visual direction. The agent can help phrase and save your decisions after you approve them. The provided scope and review safeguards stay in place.
-
-- **Thing:** [My one-page website or mini-app and its main interaction.]
-- **Audience:** [One specific person, and what they want to do or understand.]
-- **Requirements:** One working primary interaction; selected states and results are understandable; honor my approved standing rule in AGENTS.md.
+- **Thing:** A one-page calisthenics workout planner where beginners choose a workout and add it to a built-in weekly calendar.
+- **Audience:** A beginner calisthenics club planning enjoyable workouts together and wanting a simple shared-style routine planner.
+- **Requirements:** One working primary interaction: select a workout, briefly reveal its exercise movement/cue, then add it to a chosen calendar day. Calendar choices persist in the current browser and honor the approved standing rule.
 - **Guardrails:** Static browser code. No required external service, keys, accounts, runtime AI, or private data. Label fictional or sample content. Preserve the example and publishing setup. Work on a branch and wait for human review before shipping.
-- **Experience:** [My visual reference or direction and the most important layout or interaction relationship.]
-- **Test:** I can complete the main action, check one boundary or factual claim, and point to my standing rule's effect in the actual preview. After I approve and merge, the same registered Pages URL works.
-
-The coastal example has a [completed TARGET](examples/coast/SPEC.md). It demonstrates the format, not a required topic.
+- **Experience:** Beginner-friendly, energetic, and fun; use clear workout cards, a visible weekly calendar, and a short movement reveal when a workout is selected.
+- **Test:** I can select a workout, see its movement cue, add it to a day, refresh and find it still planned, remove it, and point to the standing rule's effect in the preview. After I approve and merge, the same registered Pages URL works.
