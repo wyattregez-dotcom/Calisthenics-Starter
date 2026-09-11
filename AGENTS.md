@@ -17,9 +17,11 @@ This student gate does not block an explicitly authorized maintainer task prepar
 
 After STOP 1, help the student propose and approve the six TARGET lines and one observable standing rule. Save and read them back from the build branch. Do not start the personal build until the brief is correct and the unchanged starter has a usable preview.
 
+
 ## My standing rule
 
-[One observable, student-approved rule that protects this project's purpose or experience.]
+
+Every saved calendar workout must display its workout name and offer a clear one-click Remove control.
 
 ## Workflow
 
